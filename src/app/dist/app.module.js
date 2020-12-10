@@ -14,36 +14,32 @@ var angularfire2_1 = require("angularfire2");
 var database_1 = require("angularfire2/database");
 var router_1 = require("@angular/router");
 var forms_1 = require("@angular/forms");
-var material_module_1 = require("src/app/material/material.module");
-var angular_ng_autocomplete_1 = require("angular-ng-autocomplete");
-var ngx_skeleton_loader_1 = require("ngx-skeleton-loader");
-var autocomplete_1 = require("@angular/material/autocomplete");
 var app_component_1 = require("./app.component");
 var environment_prod_1 = require("../environments/environment.prod");
+var users_component_1 = require("./users/users.component");
+var categories_component_1 = require("./categories/categories.component");
+var features_component_1 = require("./features/features.component");
+var offers_component_1 = require("./offers/offers.component");
+var supply_component_1 = require("./supply/supply.component");
+var sign_up_component_1 = require("./sign-up/sign-up.component");
+var supply_demand_component_1 = require("./supply-demand/supply-demand.component");
+var sign_in_component_1 = require("./sign-in/sign-in.component");
+var auth_service_1 = require("src/app/services/auth.service");
 var animations_1 = require("@angular/platform-browser/animations");
 var ngx_pagination_1 = require("ngx-pagination");
 var http_1 = require("@angular/common/http");
-var signup_component_1 = require("./signup/signup.component");
-var login_component_1 = require("./login/login.component");
-var header_component_1 = require("./header/header.component");
-var help_component_1 = require("./help/help.component");
-var categories_component_1 = require("./categories/categories.component");
-var mainscreen_component_1 = require("./mainscreen/mainscreen.component");
-var cater_component_1 = require("./cater/cater.component");
-var subcat_component_1 = require("./subcat/subcat.component");
-var sub_subcat_component_1 = require("./sub-subcat/sub-subcat.component");
-var subject_component_1 = require("./subject/subject.component");
-var ngx_markdown_1 = require("ngx-markdown");
-var footer_component_1 = require("./footer/footer.component");
-var search_component_1 = require("./search/search.component");
-var loader_component_1 = require("./loader/loader.component");
-var routers = [
-    { path: '', redirectTo: 'Main', pathMatch: 'full' },
-    { path: 'Main', component: mainscreen_component_1.MainscreenComponent },
-    { path: 'Categories', component: cater_component_1.CaterComponent },
-    { path: 'SUbCategories/:Id', component: subcat_component_1.SUBcatComponent },
-    { path: 'Subjects/:Id', component: sub_subcat_component_1.SubSUBCATComponent },
-    { path: 'Subject/:Id', component: subject_component_1.SubjectComponent },
+var removewhitespaces_pipe_1 = require("src/app/custompipe/removewhitespaces.pipe");
+var routes = [
+    { path: '', redirectTo: 'Sign-in', pathMatch: 'full' },
+    { path: 'Home', component: users_component_1.UsersComponent, canActivate: [auth_service_1.AuthService] },
+    { path: 'User', component: users_component_1.UsersComponent, canActivate: [auth_service_1.AuthService] },
+    { path: 'Categories', component: categories_component_1.CategoriesComponent, canActivate: [auth_service_1.AuthService] },
+    { path: 'offers/:Id', component: offers_component_1.OffersComponent, canActivate: [auth_service_1.AuthService] },
+    { path: 'Features', component: features_component_1.FeaturesComponent, canActivate: [auth_service_1.AuthService] },
+    { path: 'Supply/:Id', component: supply_component_1.SupplyComponent, canActivate: [auth_service_1.AuthService] },
+    { path: 'SupplyDemand/:Id', component: supply_demand_component_1.SupplyDemandComponent, canActivate: [auth_service_1.AuthService] },
+    { path: 'signup', component: sign_up_component_1.SignUpComponent, canDeactivate: [auth_service_1.AuthService] },
+    { path: 'Sign-in', component: sign_in_component_1.SignInComponent },
 ];
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -52,27 +48,21 @@ var AppModule = /** @class */ (function () {
         core_1.NgModule({
             declarations: [
                 app_component_1.AppComponent,
-                signup_component_1.SignupComponent,
-                login_component_1.LoginComponent,
-                header_component_1.HeaderComponent,
-                help_component_1.HelpComponent,
+                users_component_1.UsersComponent,
                 categories_component_1.CategoriesComponent,
-                mainscreen_component_1.MainscreenComponent,
-                cater_component_1.CaterComponent,
-                subcat_component_1.SUBcatComponent,
-                sub_subcat_component_1.SubSUBCATComponent,
-                subject_component_1.SubjectComponent,
-                footer_component_1.FooterComponent,
-                search_component_1.SearchComponent,
-                loader_component_1.LoaderComponent
+                features_component_1.FeaturesComponent,
+                offers_component_1.OffersComponent,
+                supply_component_1.SupplyComponent,
+                sign_up_component_1.SignUpComponent,
+                supply_demand_component_1.SupplyDemandComponent,
+                sign_in_component_1.SignInComponent, removewhitespaces_pipe_1.RemovewhitespacesPipe
             ],
             imports: [
-                platform_browser_1.BrowserModule, forms_1.FormsModule, forms_1.ReactiveFormsModule,
+                platform_browser_1.BrowserModule, forms_1.FormsModule,
                 angularfire2_1.AngularFireModule.initializeApp(environment_prod_1.environment.firebase),
-                database_1.AngularFireDatabaseModule, material_module_1.MaterialModule,
-                router_1.RouterModule.forRoot(routers), auth_1.AngularFireAuthModule,
-                auth_1.AngularFireAuthModule, animations_1.BrowserAnimationsModule, ngx_pagination_1.NgxPaginationModule, http_1.HttpClientModule, ngx_markdown_1.MarkdownModule.forRoot(),
-                angular_ng_autocomplete_1.AutocompleteLibModule, ngx_skeleton_loader_1.NgxSkeletonLoaderModule, autocomplete_1.MatAutocompleteModule
+                database_1.AngularFireDatabaseModule,
+                router_1.RouterModule.forRoot(routes), auth_1.AngularFireAuthModule,
+                auth_1.AngularFireAuthModule, forms_1.FormsModule, animations_1.BrowserAnimationsModule, ngx_pagination_1.NgxPaginationModule, http_1.HttpClientModule
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent]

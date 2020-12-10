@@ -8,20 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 exports.__esModule = true;
 exports.AppComponent = void 0;
 var core_1 = require("@angular/core");
-var rxjs_1 = require("rxjs");
 var AppComponent = /** @class */ (function () {
     function AppComponent(db, auth) {
         this.db = db;
         this.auth = auth;
         this.logoutt = false;
+        //private bookCounter = 0;
         this.isUser = false;
     }
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var numbers = rxjs_1.timer(3000);
-        numbers.subscribe(function (x) {
-            _this.timer = x;
-        });
         this.auth.afathu.user.subscribe(function (userr) {
             if (userr)
                 _this.isUser = true;

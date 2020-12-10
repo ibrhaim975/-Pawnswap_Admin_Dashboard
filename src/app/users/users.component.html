@@ -1,0 +1,45 @@
+<div style="  margin-top: 100px; margin-right:10px;     
+" class="   container text-center  width: 800px;">
+    <table class=" box  table  shadow-lg p-3 mb-5 bg-white roundedtvv">
+        <thead style="background-color:#17a2b8; color:#F5F5F5	">
+            <tr>
+                <th class="font-weight-normal" scope="col">UserImage</th>
+                <th class="font-weight-normal" scope="col">UserName</th>
+                <th class="font-weight-normal" scope="col">Email</th>
+                <th class="font-weight-normal" scope="col">CreatedAt</th>
+                <th class="font-weight-normal" scope="col"> InsuranceNum
+                </th>
+                <th class="font-weight-normal">
+                    SupplyDemand </th>
+            </tr>
+
+        </thead>
+        <tbody style="background-color: white;">
+            <tr *ngFor="let item of cat | paginate: config  ;let i=index  ">
+
+                <th class="align-middle" scope="col"><img style="width: 100px; height:100px; "
+                        class="border border-primary rounded-circle mx-auto d-block" src="{{item.userImage}}">
+                </th>
+                <th class="align-middle font-weight-normal" scope="col">{{item.username}}</th>
+                <th class="align-middle font-weight-normal" scope="col">{{item.email}}</th>
+                <th class="align-middle font-weight-normal" scope="col">{{   item.createdAt* 1000 | date:"MMM dd yyy"}}
+                </th>
+                <th class="align-middle font-weight-normal" scope="col">{{item.insuranceNum}}</th>
+                <th class="align-middle">
+                    <button *ngIf="idS[i]!=item.id" routerLink="/SupplyDemand/{{item.userId}}" type="button"
+                        class="btn btn-info">view</button>
+
+                </th>
+
+
+
+            </tr>
+            <tr>
+                <th colspan="6">
+                    <pagination-controls  (pageChange)="pageChanged($event)"></pagination-controls>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

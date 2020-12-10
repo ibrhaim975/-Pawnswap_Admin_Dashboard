@@ -1,0 +1,22 @@
+<div style=" opacity:0.85; margin-top: 100px; margin-right:350px; width:600px; border-radius:30px;"
+  class=" container card text-white bg-dark mb- ">
+  <div class="card-header font-weight-bold  display-4 ">Sign Up</div>
+
+  <div class="card-body ">
+
+    <form ngNativeValidate #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+      <input style=" margin-bottom:25px"type="string" name="name" [(ngModel)]="name" class="form-control" placeholder="Enter UserName" required>
+      <input  type="email" name="email" [(ngModel)]="email" class="form-control"
+        placeholder="Enter Email" required email>
+      <input style=" margin-top: 25px;" type="password" name="password" [(ngModel)]="password" class="form-control"
+        placeholder="Enter Password" required minlength="6">
+
+
+      <div class="text-center">
+        <button style=" margin-top: 25px; border-radius: 10px; width:300px;" type="submit"
+          class="btn btn-outline-primary btn-lg ">Sign up</button>
+        <div class="alret alret-danger">{{errmessage}}</div>
+
+      </div>
+    </form>
+  </div>

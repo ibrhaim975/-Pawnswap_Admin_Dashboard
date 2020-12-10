@@ -1,0 +1,23 @@
+<div style=" opacity:0.85; margin-top: 100px; margin-right:350px; width:600px; border-radius:30px;"
+  class=" container card    shadow-lg p-3 mb-5 bg-white rounded">
+  <div style="text-align: center;
+  padding: 5%;
+  font-size: 45px;" class="font-weight-bold  display-4 ">Log in</div>
+
+  <div class="card-body">
+    <div *ngIf="errmessage" class="alert alert-danger">{{errmessage}}</div>
+
+    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+      <input type="email" name="email" [(ngModel)]="email" class="form-control" placeholder="Enter Email" required
+        email>
+      <input style=" margin-top: 25px;" type="password" name="password" [(ngModel)]="password" class="form-control"
+        placeholder="Enter Password" required minlength="6"  required emal>  
+
+
+      <div class="text-center">
+        <button style=" margin-top: 25px; margin-right: 10px; border-radius: 10px; width:250px;" type="submit"
+          class="btn btn-outline-secondary btn-lg ">Log in</button>
+
+      </div>
+    </form>
+  </div>

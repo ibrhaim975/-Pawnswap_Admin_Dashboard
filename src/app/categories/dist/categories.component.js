@@ -46,6 +46,7 @@ var CategoriesComponent = /** @class */ (function () {
             currentPage: 1,
             totalItems: this.cat.length
         };
+        console.log(this.config.currentPage.next);
     };
     CategoriesComponent.prototype.edit = function (record) {
         record.isEdit = true;

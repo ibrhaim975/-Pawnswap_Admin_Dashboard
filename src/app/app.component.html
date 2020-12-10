@@ -1,4 +1,55 @@
+<body  [ngClass]="{'disable':logoutt === true}">
 
-<app-header *ngIf="timer==0"></app-header>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+    <div  class="wrapper" *ngIf="isUser==true" >
+
+        <div class="sidebar shadow-lg roundedtvv">
+            <h2 class="display-1 font-weight-light">Control Panel</h2>
+            <div class="shadow p-3 mb-5  rounded" style="margin: 0px;">
+
+                <img style="width: 100px; height:100px" class="border border-secondary rounded-circle mx-auto d-block "
+                    src="https://icon-library.com/images/default-user-icon/default-user-icon-8.jpg">
+                <h5 class="display-4 font-weight-normal">pawnswapp</h5>
+            </div>
+            <div>
+            <ul class="list-group"  >
+                <li><a   [disabled]="true" routerLink="/User"><i class="fas fa-users "></i> Users</a></li>
+                <li><a routerLink="/Categories"><i class="fas fa-clipboard-list"></i>Categories</a></li>
+                <li><a routerLink="/Features"><i class="fas fa-clipboard-list"></i>Features</a></li>
+
+                <li><a  [ngStyle]="{'cursor': 'pointer'}"
+   (click)="logoutt=true" ><i class="fas fa-sign-out-alt "></i>Log out</a></li>
+         
+            </ul>
+        </div>
+        </div>
+
+        
+         
+    </div>
+    
+    <router-outlet></router-outlet>
+</body>
+<div style="margin-bottom: 15px; position: absolute;" *ngIf="!logoutt==true; else elselog"></div>
+
+    <ng-template #elselog >
+          
+        <div class=" boxx stack-top  stack-top card  bg-light mb-3 card  border-info  shadow-lg  rounded text-center"
+        style=" margin-top: 150px; margin-left: 450px; opacity: 95%; width: 500px; height: 200px; 
+        ">
+        <div class="card-header h4 bg-info text-white "> Confrim Logout</div>
+
+        <div  class="card-body">
+
+            <h1 style="margin-top:20px ;" class="display-1"> Are you sure want to Logout</h1>
+
+        </div>
+
+        <div class="card-footer row " >
+            <button  type="button"  (click)="logoutt = false"
+                class=" btn btn-danger card-link btn-lg btn-block   col">Cancel</button>
+                <button type="button" (click)="logoutt = false" routerLink="/Sign-in" (click)="logOut()"    
+                class=" card-link btn btn-primary  col">Logout</button>
+
+        </div>
+    </div>
+    </ng-template>

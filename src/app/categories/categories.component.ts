@@ -26,19 +26,19 @@ export class CategoriesComponent implements OnInit {
   config: any;
   counterr = []
   mySubscription: any;
-  vlaue: string
+vlaue :string
   op = 0
-  bolo: boolean = true
+  bolo :boolean = true 
   constructor(private db: AngularFireDatabase, private auth: AuthService) {
 
   }
 
-  ngOnInit(): void {
+   ngOnInit(): void {
 
 
     this.CaTT = this.db.list('categories/').valueChanges().subscribe(d => {
       this.cat = d
-
+ 
     }
     )
     this.db.list('supply/').snapshotChanges().subscribe(data => {
@@ -73,6 +73,7 @@ export class CategoriesComponent implements OnInit {
       currentPage: 1,
       totalItems: this.cat.length
     };
+console.log(this.config.currentPage.next)
   }
   edit(record) {
     record.isEdit = true;
@@ -93,29 +94,29 @@ export class CategoriesComponent implements OnInit {
   Add() {
     this.vlaue = this.Categories.replace(/ /g, '')
     console.log(this.vlaue.length)
-    if (this.vlaue.length != 0) {
-      this.db.createPushId().charAt
-      var c = this.db.list('categories/').query.ref.push({});
-      var k = c.key;
-      this.db.list('categories/').set(k, {
-        name: this.vlaue,
-        id: k,
+    if(this.vlaue.length !=0){
+    this.db.createPushId().charAt
+    var c = this.db.list('categories/').query.ref.push({});
+    var k = c.key;
+    this.db.list('categories/').set(k, {
+      name: this.vlaue,
+      id: k,
 
-      })
-
-    }
-    location.reload();
+    })
+  
+  }
+  location.reload();
 
   }
   noWhitespaceValidator(control: FormControl) {
     const isWhitespace = (control.value || "").trim().length === 0;
     const isValid = !isWhitespace;
-    return (isValid ? null : { "whitespace": true });
-  }
-  deleteConfrim(record) {
-    record.isdelete = true;
+    return  (isValid ? null : { "whitespace": true });
+}
+deleteConfrim(record) {
+  record.isdelete = true;
 
-  }
+}
   delete(id) {
     if (id != null) {
       this.db.list('categories/' + id).remove();
@@ -124,16 +125,16 @@ export class CategoriesComponent implements OnInit {
     } else {
       alert("error occurs");
     }
-    location.reload();
+   location.reload();
 
   }
-
+  
   pageChanged(event) {
     this.config.currentPage = event;
 
   }
-  absoluteIndex(indexOnPage: number): number {
-    return this.config.itemsPerPage * (this.config.itemsPerPage - 1) + indexOnPage;
-  }
+absoluteIndex(indexOnPage: number): number {
+  return this.config.itemsPerPage * (this.config.itemsPerPage - 1) + indexOnPage;
+}
 }
 

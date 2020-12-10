@@ -1,0 +1,27 @@
+.form-control{
+    border: none;
+    border: 2px solid;
+    border-radius: 10px;
+  
+  }
+  
+  .form-control:focus{
+    border: 3px solid cadetblue;
+    box-shadow: none;
+  
+  }
+  
+  a{
+    text-decoration: none;
+  
+  }
+  
+  @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+  
+  
+  input{
+    margin-top: 25px;
+  }
+  
+  
+  

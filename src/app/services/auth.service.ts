@@ -3,6 +3,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { Observable } from 'rxjs';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { UsersComponent } from '../users/users.component';
 
 @Injectable({
   providedIn: 'root'

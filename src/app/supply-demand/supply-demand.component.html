@@ -1,0 +1,41 @@
+<div style="  margin-top: 100px; margin-right:10px;     
+" class="   container text-center  width: 800px;">
+    <table class=" box  table  shadow-lg p-3 mb-5 bg-white roundedtvv">
+        <thead>
+            <tr style="background-color:#17a2b8; color:#F5F5F5	">
+                <th class="font-weight-normal" scope="col">Title</th>
+                <th class="font-weight-normal"scope="col">Status</th>
+                <th class="font-weight-normal" scope="col">Details</th>
+                <th class="font-weight-normal"scope="col">From</th>
+                <th  class="font-weight-normal"scope="col">To</th>
+
+
+            </tr>
+        </thead>
+        <tbody style="background-color: white;">
+            <tr *ngFor="let item of cat | paginate: config ;  let i=index  ">
+
+
+                <th class="align-middle font-weight-normal" scope="col">{{item.title}}</th>
+                <th class="align-middle font-weight-normal" scope="col">{{item.status}}</th>
+                <th class="align-middle font-weight-normal" scope="col">{{item.details}}</th>
+                <th class="align-middle font-weight-normal" scope="col">{{item.from}}</th>
+                <th class="align-middle font-weight-normal" scope="col">{{item.to}}</th>
+
+
+
+
+
+            </tr>
+            <tr>
+                <th colspan="7">
+                    <pagination-controls class="text-center" (pageChange)="pageChanged($event)"></pagination-controls>
+
+
+                </th>
+            </tr>
+        </tbody>
+
+    </table>
+
+</div>

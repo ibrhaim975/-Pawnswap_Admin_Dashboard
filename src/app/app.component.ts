@@ -3,7 +3,6 @@ import { AngularFireDatabase } from "angularfire2/database";
 import { FormGroup, FormControl, FormArray, FormBuilder, FormsModule } from '@angular/forms'
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AuthService } from "src/app/services/auth.service";
-import { timer } from 'rxjs';
 
 
 @Component({
@@ -13,7 +12,7 @@ import { timer } from 'rxjs';
 })
 
 export class AppComponent implements OnInit{
-  timer
+
 
 item:any;
 logoutt : boolean = false
@@ -23,12 +22,6 @@ logoutt : boolean = false
   isUser : boolean=false;
 
   ngOnInit(): void {
-    const numbers = timer(3000);
-    numbers.subscribe(x => {
-      this.timer = x
-      
-    
-    } );
  this.auth.afathu.user.subscribe(userr=>{
 if(userr) this.isUser= true
 else this.isUser = false
